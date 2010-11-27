@@ -10,6 +10,14 @@
       content:  "(your tooltip's content)"
       event:    'click' # click, hover (TODO)
     
+    # here's some crockford awesomeness...
+    if not String.prototype.supplant
+      String.prototype.supplant = (o)->
+        this.replace /{([^{}]*)}/g , (a, b)->
+          r = o[b]
+          if typeof r is 'string' or typeof r is 'number' then r else a
+    
+    # And now the plugin's stuff...
     this.each ->
     
       shown = false
@@ -19,7 +27,7 @@
       if options
         $.extend settings, options
         
-      $content = $('<div class="julienTooltips">'+settings.content+'</div>')
+      $content = $('<div class="jt_container"><div class="jt_content">'+settings.content+'</div></div>')
       $overlay = $('<div class="jt_overlay"></div>')
       
       $(this).css 

@@ -1,6 +1,6 @@
 /* Default theme (you can edit this) */
 
-.julienTooltips {
+.jt_container {
 	width: 200px;
 	height: 140px;
 	background: #1A1A1A;
@@ -8,7 +8,7 @@
 }
 
 /* Don't edit below */
-.julienTooltips {
+.jt_container {
 	position: absolute; z-index: 11000;
 }
 

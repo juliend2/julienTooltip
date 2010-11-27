@@ -8,6 +8,19 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       content: "(your tooltip's content)",
       event: 'click'
     };
+    if (!String.prototype.supplant) {
+      String.prototype.supplant = function(o) {
+        return this.replace(/{([^{}]*)}/g, function(a, b) {
+          var r;
+          r = o[b];
+          if (typeof r === 'string' || typeof r === 'number') {
+            return r;
+          } else {
+            return a;
+          }
+        });
+      };
+    }
     return this.each(function() {
       var $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown;
       shown = false;
@@ -15,7 +28,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       if (options) {
         $.extend(settings, options);
       }
-      $content = $('<div class="julienTooltips">' + settings.content + '</div>');
+      $content = $('<div class="jt_container"><div class="jt_content">' + settings.content + '</div></div>');
       $overlay = $('<div class="jt_overlay"></div>');
       $(this).css({
         'position': 'relative'
