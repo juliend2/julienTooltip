@@ -6,7 +6,9 @@
 	background: #1A1A1A;
 	color: white;
 }
-
+.jt_container .jt_close {
+	color: white;
+}
 /* Don't edit below */
 .jt_container {
 	position: absolute; z-index: 11000;

@@ -9,8 +9,9 @@
       theme:    'default'
       content:  "(your tooltip's content)"
       event:    'click' # click, hover (TODO)
+      closeBtn: '<a class="" href="#">Close</a>'
     
-    # here's some crockford awesomeness...
+    # Crockford's String.supplant()
     if not String.prototype.supplant
       String.prototype.supplant = (o)->
         this.replace /{([^{}]*)}/g , (a, b)->
@@ -27,7 +28,9 @@
       if options
         $.extend settings, options
         
-      $content = $('<div class="jt_container"><div class="jt_content">'+settings.content+'</div></div>')
+      $content = $('<div class="jt_container"><a class="jt_close" href="#">Close</a><div class="jt_content">{content}</div></div>'.supplant
+        content:settings.content
+        )
       $overlay = $('<div class="jt_overlay"></div>')
       
       $(this).css 
@@ -44,13 +47,15 @@
         $content.hide()
         shown = false
         $('.jt_overlay').remove()
+        return false
       
       # setup the content div
       $(this).append $content
       $content.css
         'left': getLeft()
         'top':  getTop()
-        
+      $content.find('.jt_close').click closeTooltip
+      
       # setup the events
       $content.hide()
       $(this).bind settings.event, (e)=>
