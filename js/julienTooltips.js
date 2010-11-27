@@ -5,7 +5,6 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     settings = {
       location: 'top',
       theme: 'default',
-      content: "(your tooltip's content)",
       event: 'click',
       closeBtn: '<a class="" href="#">Close</a>'
     };
@@ -29,8 +28,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       if (options) {
         $.extend(settings, options);
       }
-      $content = $('<div class="jt_container"><a class="jt_close" href="#">Close</a><div class="jt_content">{content}</div></div>'.supplant({
-        content: settings.content
+      $content = $('<div class="jt_wrapper"><a class="jt_close" href="#">Close</a><div class="jt_container">{content}</div></div>'.supplant({
+        content: $(this).find('.jt_content').html()
       }));
       $overlay = $('<div class="jt_overlay"></div>');
       $(this).css({
