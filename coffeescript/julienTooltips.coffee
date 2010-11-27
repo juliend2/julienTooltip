@@ -37,10 +37,10 @@
         'position':'relative'
         
       getLeft = ->
-        if settings.location == 'right' then $(matchedObject).width() else 0
+        if settings.location == 'right' then $(matchedObject).outerWidth() else 0
         
       getTop = ->
-        if settings.location == 'bottom' then $(matchedObject).height() else 0
+        if settings.location == 'bottom' then $(matchedObject).outerHeight() else 0
       
       closeTooltip = ->
         if not shown then return false

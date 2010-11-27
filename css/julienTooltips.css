@@ -1,24 +1,24 @@
 /* Default theme (you can edit this) */
 
 .jt_container {
-	width: 200px;
-	height: 140px;
-	background: #1A1A1A;
-	color: white;
+  width: 200px;
+  height: 140px;
+  background: #1A1A1A;
+  color: white;
 }
 .jt_container .jt_close {
-	color: white;
+  color: white;
 }
 /* Don't edit below */
 .jt_container {
-	position: absolute; z-index: 11000;
+  position: absolute; z-index: 11000;
 }
 
 .jt_overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 10000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
 }

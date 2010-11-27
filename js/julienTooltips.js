@@ -38,14 +38,14 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       });
       getLeft = function() {
         if (settings.location === 'right') {
-          return $(matchedObject).width();
+          return $(matchedObject).outerWidth();
         } else {
           return 0;
         }
       };
       getTop = function() {
         if (settings.location === 'bottom') {
-          return $(matchedObject).height();
+          return $(matchedObject).outerHeight();
         } else {
           return 0;
         }
