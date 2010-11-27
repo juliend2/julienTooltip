@@ -3,15 +3,26 @@
 <head>
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="stylesheet" href="css/julienTooltips.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+	<style type="text/css">
+	#joie {
+		width: 150px;
+		height: 40px;
+		background: #992E13;
+	}
+	</style>
 	<script src="js/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/julienTooltips.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	$(function(){
-		
+		$('div').julienTooltips({
+			'content':'joie',
+			'location':'right'
+		});
 	});
 	</script>
 </head>
 <body>
-	
+	<div id="joie">joie</div>
 </body>
 </html>

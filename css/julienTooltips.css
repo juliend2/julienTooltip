@@ -1,0 +1,22 @@
+/* Default theme (you can edit this) */
+
+.julienTooltips {
+	width: 200px;
+	height: 140px;
+	background: #1A1A1A;
+	color: white;
+}
+
+/* Don't edit below */
+.julienTooltips {
+	position: absolute;
+}
+
+.jt_overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid red;
+}
