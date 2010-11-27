@@ -9,7 +9,7 @@
 
 /* Don't edit below */
 .julienTooltips {
-	position: absolute;
+	position: absolute; z-index: 11000;
 }
 
 .jt_overlay {
@@ -18,5 +18,5 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	border: 1px solid red;
+	z-index: 10000;
 }
