@@ -1,5 +1,7 @@
 h1. Julien Tooltip
 
+$.julienTooltip is a jQuery plugin to attach tooltips to your DOM elements. The Javascript is coded with CoffeeScript.
+
 h2. Easy to Install
 
 0. In your @<head>@, make sure you included julienTooltip.css and julienTooltip.js
