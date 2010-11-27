@@ -4,7 +4,7 @@ $.julienTooltip is a jQuery plugin to attach tooltips to your DOM elements. The 
 
 h2. Easy to Install
 
-0. In your @<head>@, make sure you included julienTooltip.css and julienTooltip.js
+0. In your @<head>@, make sure you included julienTooltip.css and julienTooltip.js (, and don't forget jQuery!)
 
 1. In your HTML, put this kind of code:
 @<div id="something">Click here to see my tooltip!<div class="jt_content">This is a Tooltip.</div></div>@
