@@ -1,12 +1,11 @@
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 (function($) {
-  return $.fn.julienTooltips = function(options) {
+  return $.fn.julienTooltip = function(options) {
     var settings;
     settings = {
       location: 'top',
       theme: 'default',
-      event: 'click',
-      closeBtn: '<a class="" href="#">Close</a>'
+      event: 'click'
     };
     if (!String.prototype.supplant) {
       String.prototype.supplant = function(o) {

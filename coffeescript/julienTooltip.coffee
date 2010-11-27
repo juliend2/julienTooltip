@@ -2,13 +2,12 @@
 
 (( $ )->
 
-  $.fn.julienTooltips = (options)->
+  $.fn.julienTooltip = (options)->
     
     settings =
       location: 'top'
       theme:    'default'
       event:    'click' # click, hover (TODO)
-      closeBtn: '<a class="" href="#">Close</a>'
     
     # Crockford's String.supplant()
     if not String.prototype.supplant
@@ -19,7 +18,7 @@
     
     # And now the plugin's stuff...
     this.each ->
-    
+      
       shown = false
       matchedObject = this
       

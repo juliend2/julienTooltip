@@ -1,0 +1,16 @@
+h1. Julien Tooltip
+
+h2. Easy to Install
+
+0. In your @<head>@, make sure you included julienTooltip.css and julienTooltip.js
+
+1. In your HTML, put this kind of code:
+@<div id="something">Click here to see my tooltip!<div class="jt_content">This is a Tooltip.</div></div>@
+
+2. And in you javascript, add this code:
+<pre>$(document).ready(function(){		
+	$('#something').julienTooltip({
+		location: 'right'
+	});
+});
+</pre>
