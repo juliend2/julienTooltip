@@ -8,8 +8,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       event: 'click',
       template: '<div class="jt_wrapper">' + '<div class="jt_arrow"></div>' + '<a class="jt_close" href="#">Close</a>' + '<div class="jt_container">{content}</div>' + '</div>',
       arrowSize: {
-        width: 10,
-        height: 30
+        width: 15,
+        height: 15
       }
     };
     if (!String.prototype.supplant) {
@@ -101,6 +101,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         top: getTop().content
       });
       $content.find('.jt_close').click(closeTooltip);
+      $content.addClass('jt_location_' + settings.location);
       $arrow.css({
         left: getLeft().arrow,
         top: getTop().arrow,

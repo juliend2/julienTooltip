@@ -14,8 +14,8 @@
         '<div class="jt_container">{content}</div>'+
         '</div>'
       arrowSize:
-        width: 10
-        height: 30
+        width: 15
+        height: 15
     
     # overload some prototypes
     if not String.prototype.supplant
@@ -85,6 +85,7 @@
         left: getLeft().content
         top:  getTop().content
       $content.find('.jt_close').click closeTooltip
+      $content.addClass('jt_location_'+settings.location)
       # arrow attributes
       $arrow.css
         left:   getLeft().arrow
