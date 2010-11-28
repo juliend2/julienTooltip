@@ -18,14 +18,14 @@
         height: 15
     
     # overload some prototypes
-    if not String.prototype.supplant
+    unless String.prototype.supplant
       String.prototype.supplant = (o)->
-        this.replace /{([^{}]*)}/g , (a, b)->
+        @replace /{([^{}]*)}/g , (a, b)->
           r = o[b]
           if typeof r in ['string','number'] then r else a
           
     # And now the plugin's stuff...
-    this.each ->
+    @each ->
       
       shown = false
       matchedObject = this
@@ -73,7 +73,7 @@
           arrow: ($content.outerHeight() - settings.arrowSize.height)/2
           
       closeTooltip = ->
-        if not shown then return false
+        unless shown then return false
         $content.hide()
         shown = false
         $('.jt_overlay').remove()
@@ -100,7 +100,7 @@
       # setup the events
       $content.hide()
       $(this).bind settings.event, (e)=>
-        if not shown
+        unless shown
           $content.show()
           $('body').append $overlay
           $overlay.css('height', $(document).height())
