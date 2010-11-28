@@ -39,6 +39,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%; height: 100%;
+    position: relative;
   }
 
 /* * * * * * * * * * * *
@@ -56,8 +57,9 @@
 .jt_overlay {
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%; 
   z-index: 10000;
+  /*background: white;*/
 }  
 .jt_content {
   display: none;

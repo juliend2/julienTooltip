@@ -15,9 +15,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     if (!String.prototype.supplant) {
       String.prototype.supplant = function(o) {
         return this.replace(/{([^{}]*)}/g, function(a, b) {
-          var r;
+          var r, _ref;
           r = o[b];
-          if (typeof r === 'string' || typeof r === 'number') {
+          if ((_ref = typeof r) === 'string' || _ref === 'number') {
             return r;
           } else {
             return a;
@@ -26,7 +26,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       };
     }
     return this.each(function() {
-      var $arrow, $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown;
+      var $arrow, $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown, _ref;
       shown = false;
       matchedObject = this;
       if (options) {
@@ -108,7 +108,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         width: settings.arrowSize.width,
         height: settings.arrowSize.height
       });
-      if (settings.location === 'top' || settings.location === 'bottom') {
+      if ((_ref = settings.location) === 'top' || _ref === 'bottom') {
         $arrow.css({
           width: settings.arrowSize.height,
           height: settings.arrowSize.width
@@ -119,6 +119,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         if (!shown) {
           $content.show();
           $('body').append($overlay);
+          $overlay.css('height', $(document).height());
           $overlay.click(closeTooltip);
           shown = true;
         }

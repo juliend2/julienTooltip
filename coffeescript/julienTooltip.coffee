@@ -22,7 +22,7 @@
       String.prototype.supplant = (o)->
         this.replace /{([^{}]*)}/g , (a, b)->
           r = o[b]
-          if typeof r is 'string' or typeof r is 'number' then r else a
+          if typeof r in ['string','number'] then r else a
           
     # And now the plugin's stuff...
     this.each ->
@@ -93,7 +93,7 @@
         width:  settings.arrowSize.width
         height: settings.arrowSize.height
       # top and bottom are special cases
-      if settings.location is 'top' or settings.location is 'bottom'
+      if settings.location in ['top', 'bottom']
         $arrow.css
           width: settings.arrowSize.height
           height: settings.arrowSize.width
@@ -103,6 +103,7 @@
         if not shown
           $content.show()
           $('body').append $overlay
+          $overlay.css('height', $(document).height())
           $overlay.click closeTooltip
           shown = true
         false
