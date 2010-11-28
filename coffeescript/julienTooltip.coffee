@@ -42,6 +42,7 @@
       
       $(this).css 
         'position':'relative'
+        'z-index':3000
       
       # some functions...
       getLeft = ->
@@ -73,7 +74,7 @@
           arrow: ($content.outerHeight() - settings.arrowSize.height)/2
           
       closeTooltip = ->
-        unless shown then return false
+        return false if not shown
         $content.hide()
         shown = false
         $('.jt_overlay').remove()

@@ -38,7 +38,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       $overlay = $('<div class="jt_overlay"></div>');
       $arrow = $content.find('.jt_arrow');
       $(this).css({
-        'position': 'relative'
+        'position': 'relative',
+        'z-index': 3000
       });
       getLeft = function() {
         if (settings.location === 'right') {
