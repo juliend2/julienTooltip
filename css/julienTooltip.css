@@ -16,7 +16,8 @@
     text-indent: -99999px;
     display: block;
     position: absolute;
-    left: 0; top: 0;
+    left: 225px; top: 5px;
+    outline: none;
   }
   .jt_wrapper .jt_arrow {
     background-image: url('../img/sprite.png');
@@ -33,6 +34,11 @@
   }
   .jt_location_bottom .jt_arrow {
     background-position: -15px -15px;
+  }
+  .jt_wrapper .jt_container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%; height: 100%;
   }
 
 /* * * * * * * * * * * *

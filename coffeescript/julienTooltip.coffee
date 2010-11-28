@@ -7,7 +7,7 @@
     settings =
       location: 'right'
       theme:    'default'
-      event:    'click' # click, hover (TODO)
+      event:    'click' # click, TODO: Add hover option
       template: '<div class="jt_wrapper">'+
         '<div class="jt_arrow"></div>'+
         '<a class="jt_close" href="#">Close</a>'+
