@@ -26,7 +26,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       };
     }
     return this.each(function() {
-      var $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown;
+      var $arrow, $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown;
       shown = false;
       matchedObject = this;
       if (options) {
@@ -36,13 +36,14 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         content: $(this).find('.jt_content').html()
       }));
       $overlay = $('<div class="jt_overlay"></div>');
+      $arrow = $content.find('.jt_arrow');
       $(this).css({
         'position': 'relative'
       });
       getLeft = function() {
         if (settings.location === 'right') {
           return {
-            content: $(matchedObject).outerWidth(),
+            content: $(matchedObject).outerWidth() + settings.arrowSize.width,
             arrow: -settings.arrowSize.width
           };
         } else if (settings.location === 'left') {
@@ -50,14 +51,22 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             content: -$content.outerWidth() - settings.arrowSize.width,
             arrow: $content.outerWidth()
           };
-        } else {
-          return 0;
+        } else if (settings.location === 'bottom') {
+          return {
+            content: -($content.outerWidth() - $(matchedObject).outerWidth()) / 2,
+            arrow: ($content.outerWidth() - settings.arrowSize.height) / 2
+          };
+        } else if (settings.location === 'top') {
+          return {
+            content: -($content.outerWidth() - $(matchedObject).outerWidth()) / 2,
+            arrow: ($content.outerWidth() - settings.arrowSize.height) / 2
+          };
         }
       };
       getTop = function() {
         if (settings.location === 'bottom') {
           return {
-            content: $(matchedObject).outerHeight(),
+            content: $(matchedObject).outerHeight() + settings.arrowSize.width,
             arrow: -settings.arrowSize.width
           };
         } else if (settings.location === 'top') {
@@ -65,8 +74,16 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             content: -$content.outerHeight() - settings.arrowSize.width,
             arrow: $content.outerHeight()
           };
-        } else {
-          return 0;
+        } else if (settings.location === 'right') {
+          return {
+            content: -($content.outerHeight() - $(matchedObject).outerHeight()) / 2,
+            arrow: ($content.outerHeight() - settings.arrowSize.height) / 2
+          };
+        } else if (settings.location === 'left') {
+          return {
+            content: -($content.outerHeight() - $(matchedObject).outerHeight()) / 2,
+            arrow: ($content.outerHeight() - settings.arrowSize.height) / 2
+          };
         }
       };
       closeTooltip = function() {
@@ -84,10 +101,18 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         top: getTop().content
       });
       $content.find('.jt_close').click(closeTooltip);
-      $content.find('.jt_arrow').css({
+      $arrow.css({
         left: getLeft().arrow,
-        top: getTop().arrow
+        top: getTop().arrow,
+        width: settings.arrowSize.width,
+        height: settings.arrowSize.height
       });
+      if (settings.location === 'top' || settings.location === 'bottom') {
+        $arrow.css({
+          width: settings.arrowSize.height,
+          height: settings.arrowSize.width
+        });
+      }
       $content.hide();
       return $(this).bind(settings.event, __bind(function(e) {
         if (!shown) {
