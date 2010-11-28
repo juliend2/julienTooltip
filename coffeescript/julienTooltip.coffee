@@ -5,9 +5,17 @@
   $.fn.julienTooltip = (options)->
     
     settings =
-      location: 'top'
+      location: 'right'
       theme:    'default'
       event:    'click' # click, hover (TODO)
+      template: '<div class="jt_wrapper">'+
+        '<div class="jt_arrow"></div>'+
+        '<a class="jt_close" href="#">Close</a>'+
+        '<div class="jt_container">{content}</div>'+
+        '</div>'
+      arrowSize:
+        width: 10
+        height: 30
     
     # Crockford's String.supplant()
     if not String.prototype.supplant
@@ -26,20 +34,33 @@
       if options
         $.extend settings, options
         
-      $content = $('<div class="jt_wrapper"><a class="jt_close" href="#">Close</a><div class="jt_container">{content}</div></div>'.supplant
-        content:$(this).find('.jt_content').html()
+      $content = $(settings.template.supplant
+        content: $(this).find('.jt_content').html()
         )
       $overlay = $('<div class="jt_overlay"></div>')
       
       $(this).css 
         'position':'relative'
-        
+      
+      # some functions...
       getLeft = ->
-        if settings.location == 'right' then $(matchedObject).outerWidth() else 0
+        if settings.location == 'right'
+          content: $(matchedObject).outerWidth()
+          arrow:   -settings.arrowSize.width 
+        else if settings.location == 'left'
+          content: -$content.outerWidth() - settings.arrowSize.width
+          arrow:   $content.outerWidth()
+        else 0
         
       getTop = ->
-        if settings.location == 'bottom' then $(matchedObject).outerHeight() else 0
-      
+        if settings.location == 'bottom'
+          content: $(matchedObject).outerHeight()
+          arrow:   -settings.arrowSize.width
+        else if settings.location == 'top'
+          content: -$content.outerHeight() - settings.arrowSize.width
+          arrow:   $content.outerHeight()
+        else 0
+          
       closeTooltip = ->
         if not shown then return false
         $content.hide()
@@ -50,9 +71,12 @@
       # setup the content div
       $(this).append $content
       $content.css
-        'left': getLeft()
-        'top':  getTop()
+        left: getLeft().content
+        top:  getTop().content
       $content.find('.jt_close').click closeTooltip
+      $content.find('.jt_arrow').css
+        left: getLeft().arrow
+        top:  getTop().arrow
       
       # setup the events
       $content.hide()
