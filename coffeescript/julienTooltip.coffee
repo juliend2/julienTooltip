@@ -102,10 +102,10 @@
       $(this).bind settings.event, (e)=>
         closeAllTooltips()
         unless shown
-          
           $content.show()
           $('body').append $overlay
           $overlay.css('height', $(document).height())
+          $overlay.css('opacity',0)
           $overlay.click closeAllTooltips
           shown = true
         false

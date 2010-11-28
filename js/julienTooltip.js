@@ -119,6 +119,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           $content.show();
           $('body').append($overlay);
           $overlay.css('height', $(document).height());
+          $overlay.css('opacity', 0);
           $overlay.click(closeAllTooltips);
           shown = true;
         }
