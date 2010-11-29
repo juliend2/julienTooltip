@@ -1,10 +1,10 @@
 h1. Julien Tooltip
 
-$.julienTooltip is a jQuery plugin to attach tooltips to your DOM elements. The Javascript is coded with CoffeeScript.
+jquery.julienTooltip is a jQuery plugin to attach tooltips to your DOM elements. The Javascript is coded with CoffeeScript.
 
-h2. Easy to Install
+h2. Install
 
-0. In your @<head>@, make sure you included julienTooltip.css and julienTooltip.js (, and don't forget jQuery!)
+0. In your @<head>@, make sure you included jquery.julienTooltip.css and jquery.julienTooltip.js (, and don't forget jQuery!)
 
 1. In your HTML, put this kind of code:
 @<div id="something">Click here to see my tooltip!<div class="jt_content">This is a Tooltip.</div></div>@
@@ -16,3 +16,12 @@ h2. Easy to Install
 	});
 });
 </pre>
+
+
+h2. Contribute
+
+1. Fork it
+
+2. "Watch" the jquery.julienTooltip.coffee file by issuing this command in the julienTooltip directory : coffee -wbc -o js/ coffeescript/*.coffee   (you must have CoffeeScript installed) . This will look for modifications on the .coffee file and compile to the javascript file automatically.
+
+3. Send me your pull requests.

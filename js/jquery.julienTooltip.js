@@ -1,5 +1,8 @@
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 (function($) {
+  $.julienTooltip = {
+    version: '0.4'
+  };
   return $.fn.julienTooltip = function(options) {
     var settings;
     settings = {
@@ -121,6 +124,10 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           $('body').append($overlay);
           $overlay.css('height', $(document).height());
           $overlay.click(closeTooltip);
+          if ($.fn.jScrollPane) {
+            console.log('joie');
+            $content.find('.jt_container').jScrollPane();
+          }
           shown = true;
         }
         return false;

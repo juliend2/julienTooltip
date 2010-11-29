@@ -1,7 +1,6 @@
-# watch with : coffee -wbc -o js/ coffeescript/*.coffee
-
 (( $ )->
-
+  $.julienTooltip = version: '0.4'
+  
   $.fn.julienTooltip = (options)->
     
     settings =
@@ -39,7 +38,6 @@
         )
       $overlay = $('<div class="jt_overlay"></div>')
       $arrow = $content.find('.jt_arrow')
-      
       $(this).css 
         'position':'relative'
       
@@ -86,6 +84,7 @@
         top:  getTop().content
       $content.find('.jt_close').click closeTooltip
       $content.addClass('jt_location_'+settings.location)
+      
       # arrow attributes
       $arrow.css
         left:   getLeft().arrow
@@ -105,6 +104,9 @@
           $('body').append $overlay
           $overlay.css('height', $(document).height())
           $overlay.click closeTooltip
+          if $.fn.jScrollPane
+            console.log('joie')
+            $content.find('.jt_container').jScrollPane()
           shown = true
         false
       
