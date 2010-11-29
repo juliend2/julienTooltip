@@ -29,7 +29,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       };
     }
     return this.each(function() {
-      var $arrow, $content, $overlay, closeTooltip, getLeft, getTop, matchedObject, shown, _ref;
+      var $arrow, $content, $overlay, closeAllTooltips, getLeft, getTop, matchedObject, shown, _ref;
       shown = false;
       matchedObject = this;
       if (options) {
@@ -41,7 +41,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       $overlay = $('<div class="jt_overlay"></div>');
       $arrow = $content.find('.jt_arrow');
       $(this).css({
-        'position': 'relative'
+        'position': 'relative',
+        'z-index': 3000
       });
       getLeft = function() {
         if (settings.location === 'right') {
@@ -89,11 +90,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
           };
         }
       };
-      closeTooltip = function() {
-        if (!shown) {
-          return false;
-        }
-        $content.hide();
+      closeAllTooltips = function() {
+        $('.jt_wrapper').hide();
         shown = false;
         $('.jt_overlay').remove();
         return false;
@@ -103,7 +101,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         left: getLeft().content,
         top: getTop().content
       });
-      $content.find('.jt_close').click(closeTooltip);
+      $content.find('.jt_close').click(closeAllTooltips);
       $content.addClass('jt_location_' + settings.location);
       $arrow.css({
         left: getLeft().arrow,
@@ -119,15 +117,16 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       }
       $content.hide();
       return $(this).bind(settings.event, __bind(function(e) {
+        closeAllTooltips();
         if (!shown) {
           $content.show();
           $('body').append($overlay);
           $overlay.css('height', $(document).height());
-          $overlay.click(closeTooltip);
           if ($.fn.jScrollPane) {
-            console.log('joie');
             $content.find('.jt_container').jScrollPane();
           }
+          $overlay.css('opacity', 0);
+          $overlay.click(closeAllTooltips);
           shown = true;
         }
         return false;

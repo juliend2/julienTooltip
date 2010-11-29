@@ -57,7 +57,7 @@
  Don't edit below this 
  * * * * * * * * * * * */
 .jt_wrapper {
-  position: absolute; z-index: 11000;
+  position: absolute; z-index: 1000;
 }
   .jt_wrapper .jt_arrow {
     position: absolute;
@@ -75,8 +75,8 @@
   position: absolute;
   top: 0; left: 0;
   width: 100%; 
-  z-index: 10000;
-  /*background: white;*/
+  z-index: 500;
+  background: white;
 }  
 .jt_content {
   display: none;

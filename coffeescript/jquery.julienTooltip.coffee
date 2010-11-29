@@ -40,6 +40,7 @@
       $arrow = $content.find('.jt_arrow')
       $(this).css 
         'position':'relative'
+        'z-index':3000
       
       # some functions...
       getLeft = ->
@@ -70,9 +71,8 @@
           content: -($content.outerHeight() - $(matchedObject).outerHeight()) / 2
           arrow: ($content.outerHeight() - settings.arrowSize.height)/2
           
-      closeTooltip = ->
-        unless shown then return false
-        $content.hide()
+      closeAllTooltips = ->
+        $('.jt_wrapper').hide()
         shown = false
         $('.jt_overlay').remove()
         return false
@@ -82,7 +82,7 @@
       $content.css
         left: getLeft().content
         top:  getTop().content
-      $content.find('.jt_close').click closeTooltip
+      $content.find('.jt_close').click closeAllTooltips
       $content.addClass('jt_location_'+settings.location)
       
       # arrow attributes
@@ -99,14 +99,15 @@
       # setup the events
       $content.hide()
       $(this).bind settings.event, (e)=>
+        closeAllTooltips()
         unless shown
           $content.show()
           $('body').append $overlay
           $overlay.css('height', $(document).height())
-          $overlay.click closeTooltip
           if $.fn.jScrollPane
-            console.log('joie')
             $content.find('.jt_container').jScrollPane()
+          $overlay.css('opacity',0)
+          $overlay.click closeAllTooltips
           shown = true
         false
       
