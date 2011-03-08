@@ -6,7 +6,7 @@
     settings =
       location: 'right'
       theme:    'default'
-      event:    'click' # click, TODO: Add hover option
+      event:    'click' # click, mouseover
       template: '<div class="jt_wrapper">'+
         '<div class="jt_arrow"></div>'+
         '<a class="jt_close" href="#">Close</a>'+
@@ -98,17 +98,29 @@
           height: settings.arrowSize.width
       # setup the events
       $content.hide()
-      $(this).bind settings.event, (e)=>
-        closeAllTooltips()
-        unless shown
-          $content.show()
-          $('body').append $overlay
-          $overlay.css('height', $(document).height())
-          if $.fn.jScrollPane
-            $content.find('.jt_container').jScrollPane()
-          $overlay.css('opacity',0)
-          $overlay.click closeAllTooltips
-          shown = true
-        false
+      if settings.event == 'click'
+        $(this).bind settings.event, (e)=>
+          closeAllTooltips()
+          unless shown
+            $content.show()
+            $('body').append $overlay
+            $overlay.css('height', $(document).height())
+            if $.fn.jScrollPane
+              $content.find('.jt_container').jScrollPane()
+            $overlay.css('opacity',0)
+            $overlay.click closeAllTooltips
+            shown = true
+          false
+      else if settings.event == 'mouseover'
+        $(this).bind 'mouseover', (e)=>
+          unless shown
+            $content.show()
+            if $.fn.jScrollPane
+              $content.find('.jt_container').jScrollPane()
+            shown = true
+        $(this).bind 'mouseout', (e)=>
+          if shown
+            closeAllTooltips()
+            shown = false
       
 ) jQuery

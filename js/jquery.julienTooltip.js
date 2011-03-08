@@ -116,21 +116,39 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         });
       }
       $content.hide();
-      return $(this).bind(settings.event, __bind(function(e) {
-        closeAllTooltips();
-        if (!shown) {
-          $content.show();
-          $('body').append($overlay);
-          $overlay.css('height', $(document).height());
-          if ($.fn.jScrollPane) {
-            $content.find('.jt_container').jScrollPane();
+      if (settings.event === 'click') {
+        return $(this).bind(settings.event, __bind(function(e) {
+          closeAllTooltips();
+          if (!shown) {
+            $content.show();
+            $('body').append($overlay);
+            $overlay.css('height', $(document).height());
+            if ($.fn.jScrollPane) {
+              $content.find('.jt_container').jScrollPane();
+            }
+            $overlay.css('opacity', 0);
+            $overlay.click(closeAllTooltips);
+            shown = true;
           }
-          $overlay.css('opacity', 0);
-          $overlay.click(closeAllTooltips);
-          shown = true;
-        }
-        return false;
-      }, this));
+          return false;
+        }, this));
+      } else if (settings.event === 'mouseover') {
+        $(this).bind('mouseover', __bind(function(e) {
+          if (!shown) {
+            $content.show();
+            if ($.fn.jScrollPane) {
+              $content.find('.jt_container').jScrollPane();
+            }
+            return shown = true;
+          }
+        }, this));
+        return $(this).bind('mouseout', __bind(function(e) {
+          if (shown) {
+            closeAllTooltips();
+            return shown = false;
+          }
+        }, this));
+      }
     });
   };
 })(jQuery);
