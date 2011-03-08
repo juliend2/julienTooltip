@@ -8,6 +8,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     settings = {
       location: 'right',
       theme: 'default',
+      autoresize: false,
       event: 'click',
       template: '<div class="jt_wrapper">' + '<div class="jt_arrow"></div>' + '<a class="jt_close" href="#">Close</a>' + '<div class="jt_container">{content}</div>' + '</div>',
       arrowSize: {
@@ -74,6 +75,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             arrow: -settings.arrowSize.width
           };
         } else if (settings.location === 'top') {
+          console.log($content.outerHeight(), -$content.outerHeight(), settings.arrowSize.width, -$content.outerHeight() - settings.arrowSize.width);
           return {
             content: -$content.outerHeight() - settings.arrowSize.width,
             arrow: $content.outerHeight()
@@ -97,6 +99,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         return false;
       };
       $(this).append($content);
+      if (settings.autoresize) {
+        $(this).find('.jt_wrapper').addClass('jt_autoresize');
+      }
       $content.css({
         left: getLeft().content,
         top: getTop().content

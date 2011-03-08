@@ -12,7 +12,7 @@
   table td {
     width: 300px; height: 200px;
   }
-  #example1, #example2, #example3, #example4 {
+  #example1, #example2, #example3, #example4, #example5, #example6 {
     width: 150px;
     height: 40px;
     padding: 10px;
@@ -24,10 +24,10 @@
   #example2 {
     background: #63995E;
   }
-  #example3 {
+  #example3, #example5 {
     background: #2D7799;
   }
-  #example4 {
+  #example4, #example6 {
     background: #D0D37A;
   }
   </style>
@@ -50,6 +50,16 @@
       'location':'bottom',
       'event':'mouseover'
     });
+    $('div#example5').julienTooltip({
+      'location':'top',
+      'event':'mouseover',
+      'autoresize': true
+    });
+    $('div#example6').julienTooltip({
+      'location':'right',
+      'event':'mouseover',
+      'autoresize': true
+    });
   });
   </script>
 </head>
@@ -64,5 +74,36 @@
       <td><div id="example4">bottom<div class="jt_content">Ho ho ho<br/>!!!!!!!!!!!</div></div></td>
     </tr>
   </table>
+  <table border="1" cellspacing="5" cellpadding="5">
+    <tr>
+      <td><div id="example5">right<div class="jt_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse urna nunc, dignissim sed mattis sed, luctus a nisi. Integer ac mauris libero. Cras molestie, lacus a congue semper, est urna varius metus, ut feugiat lorem sem eu dolor. Phasellus in neque ac tellus blandit suscipit nec sit amet purus. Nullam interdum consequat eros in tristique. Quisque volutpat, leo ac fringilla ullamcorper, diam dolor volutpat ante, eu vehicula justo eros ac sem. Vestibulum et libero non quam vestibulum tempor id sed sapien. Sed fringilla suscipit volutpat. Maecenas quis ante non sem interdum interdum. Nullam vel velit ut dui sagittis pretium.</div></div></td>
+      <td><div id="example6">left<div class="jt_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse urna nunc, dignissim sed mattis sed, luctus a nisi. Integer ac mauris libero. Cras molestie, lacus a congue semper, est urna varius metus, ut feugiat lorem sem eu dolor. Phasellus in neque ac tellus blandit suscipit nec sit amet purus. Nullam interdum consequat eros in tristique. Quisque volutpat, leo ac fringilla ullamcorper, diam dolor volutpat ante, eu vehicula justo eros ac sem. Vestibulum et libero non quam vestibulum tempor id sed sapien. Sed fringilla suscipit volutpat. Maecenas quis ante non sem interdum interdum. Nullam vel velit ut dui sagittis pretium.</div></div></td>
+    </tr>
+  </table>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 </body>
 </html>

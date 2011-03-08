@@ -5,7 +5,8 @@
     
     settings =
       location: 'right'
-      theme:    'default'
+      theme:    'default',
+      autoresize: false,
       event:    'click' # click, mouseover
       template: '<div class="jt_wrapper">'+
         '<div class="jt_arrow"></div>'+
@@ -62,6 +63,7 @@
           content: $(matchedObject).outerHeight() + settings.arrowSize.width
           arrow:   -settings.arrowSize.width
         else if settings.location == 'top'
+          console.log($content.outerHeight(), -$content.outerHeight(), settings.arrowSize.width, -$content.outerHeight() - settings.arrowSize.width)
           content: -$content.outerHeight() - settings.arrowSize.width
           arrow:   $content.outerHeight()
         else if settings.location == 'right'
@@ -79,6 +81,8 @@
       
       # setup the content div
       $(this).append $content
+      if settings.autoresize
+        $(this).find('.jt_wrapper').addClass('jt_autoresize')
       $content.css
         left: getLeft().content
         top:  getTop().content
