@@ -75,7 +75,6 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
             arrow: -settings.arrowSize.width
           };
         } else if (settings.location === 'top') {
-          console.log($content.outerHeight(), -$content.outerHeight(), settings.arrowSize.width, -$content.outerHeight() - settings.arrowSize.width);
           return {
             content: -$content.outerHeight() - settings.arrowSize.width,
             arrow: $content.outerHeight()

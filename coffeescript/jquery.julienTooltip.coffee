@@ -63,7 +63,6 @@
           content: $(matchedObject).outerHeight() + settings.arrowSize.width
           arrow:   -settings.arrowSize.width
         else if settings.location == 'top'
-          console.log($content.outerHeight(), -$content.outerHeight(), settings.arrowSize.width, -$content.outerHeight() - settings.arrowSize.width)
           content: -$content.outerHeight() - settings.arrowSize.width
           arrow:   $content.outerHeight()
         else if settings.location == 'right'
