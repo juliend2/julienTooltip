@@ -1,7 +1,7 @@
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 (function($) {
   $.julienTooltip = {
-    version: '0.4'
+    version: '0.5'
   };
   return $.fn.julienTooltip = function(options) {
     var settings;

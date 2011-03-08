@@ -1,5 +1,5 @@
 (( $ )->
-  $.julienTooltip = version: '0.4'
+  $.julienTooltip = version: '0.5'
   
   $.fn.julienTooltip = (options)->
     
